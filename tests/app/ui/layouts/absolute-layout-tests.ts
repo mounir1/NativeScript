@@ -106,6 +106,10 @@ export class AbsoluteLayoutTest extends testModule.UITest<absoluteLayoutModule.A
     public test_percent_support_nativeLayoutParams_are_correct() {
         commonTests.percent_support_nativeLayoutParams_are_correct(this);
     }
+
+    public test_percent_support() {
+        commonTests.percent_support_test(this);
+    }
 }
 
 export function createTestCase(): AbsoluteLayoutTest {
