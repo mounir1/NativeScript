@@ -3,7 +3,6 @@ import layoutHelper = require("./layout-helper");
 import enums = require("ui/enums");
 import testModule = require("../../ui-test");
 import {LayoutBase} from "ui/layouts/layout-base";
-import {Page} from "ui/page";
 import {widthProperty} from "ui/styling/style"
 import platform = require("platform");
 
@@ -153,48 +152,4 @@ export function percent_support_children_test(test: testModule.UITest<LayoutBase
     TKUnit.assertEqual(bounds.top, 0, "Reset Stretch layout TOP incorrect");
     TKUnit.assertEqual(bounds.right, 200, "Reset Stretch layout RIGHT incorrect");
     TKUnit.assertEqual(bounds.bottom, 200, "Reset Stretch layout BOTTOM incorrect");
-}
-
-export function percent_support_test(test: testModule.UITest<LayoutBase>) {
-    let layout: LayoutBase = test.testView;
-    layout.removeChildren();
-
-    let currentPage = <Page>layout.parent;
-    
-    currentPage.width = layoutHelper.dp(200);
-    currentPage.height = layoutHelper.dp(200);
-    currentPage.actionBarHidden = true;
-    
-    (<any>layout).width = "50%";
-    (<any>layout).height = "50%";
-    layout.margin = "10%";
-
-    test.waitUntilTestElementLayoutIsValid();
-
-    TKUnit.assertEqual(layout.getMeasuredWidth(), 100, "LayoutBase MeasuredWidth incorrect");
-    TKUnit.assertEqual(layout.getMeasuredHeight(), 100, "LayoutBase MeasuredHeight incorrect");
-
-    let bounds = layout._getCurrentLayoutBounds();
-    TKUnit.assertEqual(bounds.left, 50, "Center layout LEFT incorrect");
-    TKUnit.assertEqual(bounds.top, 50, "Center layout TOP incorrect");
-    TKUnit.assertEqual(bounds.right, 150, "Center layout RIGHT incorrect");
-    TKUnit.assertEqual(bounds.bottom, 150, "Center layout BOTTOM incorrect");
-
-    //reset values.
-    currentPage.height = Number.NaN;
-    (<any>currentPage.style)._resetValue(widthProperty);
-
-    layout.height = Number.NaN;
-    (<any>layout.style)._resetValue(widthProperty);
-    layout.margin = "0";
-    layout.height = Number.NaN;
-
-    test.waitUntilTestElementLayoutIsValid();
-
-    TKUnit.assertEqual(layout.marginLeft, 0, "marginLeft");
-    TKUnit.assertEqual(layout.marginTop, 0, "marginTop");
-    TKUnit.assertEqual(layout.marginRight, 0, "marginRight");
-    TKUnit.assertEqual(layout.marginBottom, 0, "marginBottom");
-    TKUnit.assert(isNaN(layout.width), "width");
-    TKUnit.assert(isNaN(layout.height), "height");
 }

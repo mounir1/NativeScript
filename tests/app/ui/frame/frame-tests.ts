@@ -3,12 +3,17 @@ import frameModule = require("ui/frame");
 var topmost = frameModule.topmost();
 // << frame-require
 
-import app = require("application");
+import platform = require("platform");
 import labelModule = require("ui/label");
 import pagesModule = require("ui/page");
 import testModule = require("../../ui-test");
 import TKUnit = require("../../TKUnit");
-import {widthProperty} from "ui/styling/style"
+import {widthProperty, heightProperty} from "ui/styling/style"
+
+var uiUtils;
+if (platform.isIOS) {
+     uiUtils = require("ui/utils");
+}
 
 export class FrameTest extends testModule.UITest<frameModule.Frame> {
 
@@ -16,7 +21,7 @@ export class FrameTest extends testModule.UITest<frameModule.Frame> {
         return new frameModule.Frame();
     }
     
-    public test_percent_width_and_height_support() {
+    public test_percent_width_and_height_set_to_page_support() {
         let topFrame = frameModule.topmost();
 
         let currentPage = topFrame.currentPage;
@@ -36,16 +41,14 @@ export class FrameTest extends testModule.UITest<frameModule.Frame> {
         TKUnit.assertEqual(currentPageHeight, Math.round(topFrameHeight / 2), "Current page MeasuredHeight incorrect");
 
         //reset values.
-        currentPage.height = Number.NaN;
+        (<any>currentPage.style)._resetValue(heightProperty);
         (<any>currentPage.style)._resetValue(widthProperty);
-        
-        currentPage.height = Number.NaN;
 
         TKUnit.assert(isNaN(currentPage.width), "width");
         TKUnit.assert(isNaN(currentPage.height), "height");
     }
 
-    public test_percent_margin_support() {
+    public test_percent_margin_set_to_page_support() {
         let topFrame = frameModule.topmost();
 
         let currentPage = topFrame.currentPage;
@@ -62,8 +65,7 @@ export class FrameTest extends testModule.UITest<frameModule.Frame> {
 
         let marginLeft = topFrameWidth * 0.1;
         let marginTop;
-        if (app.ios) {
-            let uiUtils = require("ui/utils");
+        if (uiUtils) {
             marginTop = topFrameHeight * 0.1 + uiUtils.ios.getStatusBarHeight();
         } else {
              marginTop = topFrameHeight * 0.1;
