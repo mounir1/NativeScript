@@ -4,6 +4,7 @@ import enums = require("ui/enums");
 import frameModule = require("ui/frame");
 import testModule = require("../../ui-test");
 import {LayoutBase} from "ui/layouts/layout-base";
+import {Page} from "ui/page";
 import {widthProperty} from "ui/styling/style"
 import platform = require("platform");
 
@@ -159,10 +160,11 @@ export function percent_support_test(test: testModule.UITest<LayoutBase>) {
     let layout: LayoutBase = test.testView;
     layout.removeChildren();
 
-    let currentPage = layout.parent;
+    let currentPage = <Page>layout.parent;
     
     currentPage.width = layoutHelper.dp(200);
     currentPage.height = layoutHelper.dp(200);
+    currentPage.actionBarHidden = true;
     
     (<any>layout).width = "50%";
     (<any>layout).height = "50%";

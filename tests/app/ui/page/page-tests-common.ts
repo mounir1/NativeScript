@@ -551,8 +551,6 @@ export function  test_percent_width_and_height_support() {
         return testPage;
     };
 
-    this.waitUntilTestElementLayoutIsValid();
-
     let pageWidth = testPage.getMeasuredWidth();
     let pageHeight = testPage.getMeasuredHeight()
 
@@ -580,8 +578,6 @@ export function  test_percent_margin_support() {
     let pageFactory = function () {
         return testPage;
     };
-
-    //    this.waitUntilTestElementLayoutIsValid();
 
     let pageWidth = testPage.getMeasuredWidth();
     let pageHeight = testPage.getMeasuredHeight()
