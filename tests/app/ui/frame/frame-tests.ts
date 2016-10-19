@@ -8,7 +8,6 @@ import labelModule = require("ui/label");
 import pagesModule = require("ui/page");
 import testModule = require("../../ui-test");
 import TKUnit = require("../../TKUnit");
-import utils = require("utils/utils");
 import {widthProperty} from "ui/styling/style"
 
 export class FrameTest extends testModule.UITest<frameModule.Frame> {

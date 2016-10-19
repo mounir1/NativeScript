@@ -2,8 +2,6 @@
 import types = require("utils/types");
 import view = require("ui/core/view");
 import dependencyObservable = require("ui/core/dependency-observable");
-import utils = require("utils/utils");
-import style = require("ui/styling/style");
 import {PropertyChangeData, Property } from "ui/core/dependency-observable";
 import {PropertyMetadata } from "ui/core/proxy";
 
@@ -180,12 +178,6 @@ export class LayoutBase extends view.CustomLayoutView implements definition.Layo
     }
 
     protected static adjustChildrenLayoutParams(layoutBase: LayoutBase, widthMeasureSpec: number, heightMeasureSpec: number): void {
-        let availableWidth = utils.layout.getMeasureSpecSize(widthMeasureSpec);
-        let widthSpec = utils.layout.getMeasureSpecMode(widthMeasureSpec);
-
-        let availableHeight = utils.layout.getMeasureSpecSize(heightMeasureSpec);
-        let heightSpec = utils.layout.getMeasureSpecMode(heightMeasureSpec);
-
         for (let i = 0, count = layoutBase.getChildrenCount(); i < count; i++) {
             let child = layoutBase.getChildAt(i);
             view.View.adjustChildLayoutParams(child, widthMeasureSpec, heightMeasureSpec);

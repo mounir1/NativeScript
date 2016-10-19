@@ -545,11 +545,7 @@ export function  test_percent_width_and_height_support() {
     (<any>stackLayout).width = "50%";
     (<any>stackLayout).height = "50%";
 
-    testPage.content = stackLayout;
-
-    let pageFactory = function () {
-        return testPage;
-    };
+    testPage.content = stackLayout; 
 
     let pageWidth = testPage.getMeasuredWidth();
     let pageHeight = testPage.getMeasuredHeight()
@@ -574,10 +570,6 @@ export function  test_percent_margin_support() {
     let stackLayout = new StackLayout();
     stackLayout.margin = "10%";
     testPage.content = stackLayout;
-
-    let pageFactory = function () {
-        return testPage;
-    };
 
     let pageWidth = testPage.getMeasuredWidth();
     let pageHeight = testPage.getMeasuredHeight()

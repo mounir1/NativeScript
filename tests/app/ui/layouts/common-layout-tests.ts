@@ -1,7 +1,6 @@
 ﻿import TKUnit = require("../../TKUnit");
 import layoutHelper = require("./layout-helper");
 import enums = require("ui/enums");
-import frameModule = require("ui/frame");
 import testModule = require("../../ui-test");
 import {LayoutBase} from "ui/layouts/layout-base";
 import {Page} from "ui/page";
