@@ -165,6 +165,10 @@ export class DockLayoutTest extends testModule.UITest<DockLayout> {
         // << dock-layout-setdocl
     }
 
+    public test_percent_children_support() {
+        commonTests.percent_support_children_test(this);
+    }
+
     public test_percent_support() {
         commonTests.percent_support_test(this);
     }
