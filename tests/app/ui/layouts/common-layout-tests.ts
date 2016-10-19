@@ -3,7 +3,6 @@ import layoutHelper = require("./layout-helper");
 import enums = require("ui/enums");
 import testModule = require("../../ui-test");
 import {LayoutBase} from "ui/layouts/layout-base";
-import {Page} from "ui/page";
 import {widthProperty} from "ui/styling/style"
 import platform = require("platform");
 
