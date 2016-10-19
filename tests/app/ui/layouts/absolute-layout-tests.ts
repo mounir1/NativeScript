@@ -82,7 +82,7 @@ export class AbsoluteLayoutTest extends testModule.UITest<absoluteLayoutModule.A
         layoutHelper.assertLayout(btn, 25, 35, 100, 100);
     }
 
-    public test_percent_support() {
+    public test_percent_children_support() {
         let layout = this.testView;
         layout.width = layoutHelper.dp(200);
         layout.height = layoutHelper.dp(200);
@@ -105,6 +105,10 @@ export class AbsoluteLayoutTest extends testModule.UITest<absoluteLayoutModule.A
 
     public test_percent_support_nativeLayoutParams_are_correct() {
         commonTests.percent_support_nativeLayoutParams_are_correct(this);
+    }
+
+    public test_percent_support() {
+        commonTests.percent_support_test(this);
     }
 }
 

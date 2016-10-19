@@ -262,7 +262,7 @@ export class WrapLayoutTest extends testModule.UITest<wrapLayoutModule.WrapLayou
         layoutHelper.assertLayout(btn2, 50, 0, 50, 80, "button2");
     }
 
-    public test_percent_support() {
+    public test_percent_children_support() {
         let layout = this.testView;
         layout.removeChildren();
         layout.width = layoutHelper.dp(200);
@@ -317,6 +317,10 @@ export class WrapLayoutTest extends testModule.UITest<wrapLayoutModule.WrapLayou
         TKUnit.assertEqual(bounds.top, 20, "BottomRight layout TOP incorrect");
         TKUnit.assertEqual(bounds.right, 120, "BottomRight layout RIGHT incorrect");
         TKUnit.assertEqual(bounds.bottom, 120, "BottomRight layout BOTTOM incorrect");
+    }
+
+    public test_percent_support() {
+        commonTests.percent_support_test(this);
     }
 
     public test_percent_support_nativeLayoutParams_are_correct() {
