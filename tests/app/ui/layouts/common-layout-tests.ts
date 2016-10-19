@@ -190,6 +190,8 @@ export function percent_support_test(test: testModule.UITest<LayoutBase>) {
     layout.margin = "0";
     layout.height = Number.NaN;
 
+    test.waitUntilTestElementLayoutIsValid();
+
     TKUnit.assertEqual(layout.marginLeft, 0, "marginLeft");
     TKUnit.assertEqual(layout.marginTop, 0, "marginTop");
     TKUnit.assertEqual(layout.marginRight, 0, "marginRight");
