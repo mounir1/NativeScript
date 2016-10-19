@@ -453,7 +453,7 @@ declare module "ui/core/view" {
         public static layoutChild(parent: View, child: View, left: number, top: number, right: number, bottom: number): void;
 
         /**
-         * Changes the width and height of the child to one calculated from percentage values.
+         * Changes the width, height and margins of the child to one calculated from percentage values.
          *
          * @param widthMeasureSpec  Width MeasureSpec of the parent layout.
          * @param heightMeasureSpec Height MeasureSpec of the parent layout.
